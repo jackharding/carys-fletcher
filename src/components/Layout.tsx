@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {ThemeProvider} from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 import theme from '../config/theme';
 import Header from './Header';
@@ -17,4 +17,4 @@ const Layout = ({ children }) => {
   );
 }
 
-export default Layout
+export default Layout;
