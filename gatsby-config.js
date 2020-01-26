@@ -5,6 +5,16 @@ module.exports = {
     author: `@jackkh`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `rasa`,
+          `open sans\:400,400i,700`
+        ],
+        display: 'swap'
+      }
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {

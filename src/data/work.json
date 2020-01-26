@@ -1,0 +1,58 @@
+{
+  "work": [
+    {
+      "title": "Some very bad mash",
+      "description": "Some very bad mash wioth some swords and then some words. Less words?! Yes.",
+      "images": [
+        {
+          "src": "https://picsum.photos/200",
+          "alt": "An example alt"
+        },
+        {
+          "src": "https://picsum.photos/150/230",
+          "alt": "An examplt"
+        }
+      ]
+    },
+    {
+      "title": "Yay pudding",
+      "description": "Some very bad mash wioth some swords and then some words. Less words?! Yes.",
+      "images": [
+        {
+          "src": "https://picsum.photos/300",
+          "alt": "An example alt"
+        }
+      ]
+    },
+    {
+      "title": "Turnip Shnapples",
+      "description": "Some very bad mash wioth some swords and then some words. Less words?! Yes.",
+      "images": [
+        {
+          "src": "https://picsum.photos/600",
+          "alt": "An example alt"
+        }
+      ]
+    },
+    {
+      "title": "Lil Pipsqueak",
+      "description": "Some very bad mash wioth some swords and then some words. Less words?! Yes.",
+      "images": [
+        {
+          "src": "https://picsum.photos/600/120",
+          "alt": "An example alt"
+        }
+      ]
+    },
+    {
+      "title": "Pipsqueak",
+      "description": "Some very bad mash wioth some swords and then some words. Less words?! Yes.",
+      "images": [
+        {
+          "src": "https://picsum.photos/600/220",
+          "alt": "An example alt"
+        }
+      ]
+    }
+  ]
+}

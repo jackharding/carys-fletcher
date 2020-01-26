@@ -1,5 +1,6 @@
 export default {
-  colors: {
-    brand: '#fa05ab',
+  color: {
+    brand: '#c18992',
+    text: '#333',
   }
 }

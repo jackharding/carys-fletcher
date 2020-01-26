@@ -9,20 +9,26 @@ interface IWorkGridProps {
   onLoadMore: () => void;
 }
 
-const StyWorkGrid = styled.div``;
+const StyWorkGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+`;
 
 const WorkGrid = ({ children, hasMore, onLoadMore }: IWorkGridProps) => {
-  <>
-    <StyWorkGrid>
-      { children }
-    </StyWorkGrid>
+  return(
+    <>
+      <StyWorkGrid>
+        { children }
+      </StyWorkGrid>
 
-    { hasMore ? (
-      <Button
-        onClick={onLoadMore}
-      >More</Button>
-    ) : null }
-  </>
+      { hasMore ? (
+        <Button
+          onClick={onLoadMore}
+        >More</Button>
+      ) : null }
+    </>
+  );
 }
 
 export default WorkGrid;
