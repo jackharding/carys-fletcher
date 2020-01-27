@@ -1,9 +1,16 @@
 import React from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import Modal from 'react-modal';
 
 import theme from '../config/theme';
 import Header from './Header';
 import Footer from './Footer';
+
+Modal.setAppElement('#___gatsby');
+
+interface ILayoutProps {
+  children: any;
+}
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -17,10 +24,21 @@ const GlobalStyles = createGlobalStyle`
   html,body {
     padding: 0;
     margin: 0;
+    color: #050505;
+  }
+
+  * {
+    color: inherit;
   }
 
   h1,h2,h3,h4 {
+    margin: 0;
     font-family: 'rasa', serif;
+  }
+
+  p {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
   }
 `;
 
@@ -37,7 +55,7 @@ const AppContainer = styled.div`
   padding-bottom: 115px;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: ILayoutProps) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />

@@ -67,12 +67,11 @@ const Header = () => {
   return (
     <StyHeader>
       <img 
-        // srcSet={logo.childImageSharp.fixed.srcSetWebp} 
-        srcSet={logo.childImageSharp.fixed.srcSet} 
+        srcSet={logo.childImageSharp.fixed.srcSet}
         alt="Carys Fletcher Illustration logo" 
       />
 
-      <StyNav>
+      {/* <StyNav>
         <ul>
           {menuItems.map(({ link, label }) => (
             <li>
@@ -80,7 +79,7 @@ const Header = () => {
             </li>
           ))}
         </ul>
-      </StyNav>
+      </StyNav> */}
     </StyHeader>
   );
 }

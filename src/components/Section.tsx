@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Section = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 `;
 
 export default Section;

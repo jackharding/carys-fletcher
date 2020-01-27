@@ -34,6 +34,7 @@ const StyInner = styled.div`
   width: 730px;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0 15px;
 `;
 
 const Footer = () => {

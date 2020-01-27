@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 import { picture, bio } from '../data/about';
 
+import Title from './Title';
+
 const StyAbout = styled.div``;
+
 const ProfilePicture = styled.div`
   width: 150px;
   height: 150px;
-  margin: 0 35px 15px 0;
+  margin: 10px 35px 15px 0;
   float: left;
   border-radius: 50%;
   overflow: hidden;
@@ -20,42 +23,15 @@ const ProfilePicture = styled.div`
   }
 `;
 
-const Bio = styled.div`
-  color: #050505;
+const Bio = styled.div``;
 
-  * {
-    color: inherit;
-  }
-`;
-
-const BioTitle = styled.div`
-  position: relative;
-
-  h2 {
-    display: inline-block;
-    position: relative;
-    z-index: 10;
-    padding-right: 20px;
-    font-size: 36px;
-    background: #fff;
-  }
-
+const BioTitle = styled(Title)`
   &:after {
-    content: '';
-    display: block;
-    position: absolute;
     width: calc(100% - 250px);
-    height: 1px;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background: ${({ theme }) => theme.color.brand};
   }
 `;
 
-const BioText = styled.div`
-  font-family: 'Open Sans', sans-serif;
-`;
+const BioText = styled.div``;
 
 const About = () => {
   return(
@@ -72,7 +48,9 @@ const About = () => {
           <h2>About Me</h2>
         </BioTitle>
 
-        <BioText>{bio}</BioText>
+        <BioText>
+          <p>{bio}</p>
+        </BioText>
       </Bio>
     </StyAbout>
   );

@@ -6,33 +6,27 @@ import theme from '../config/theme';
 import { work } from '../data/work.json';
 
 import About from '../components/About';
+import Contact from '../components/Contact';
 import Layout from '../components/Layout';
-import WorkGrid from '../components/WorkGrid';
-import WorkItem from '../components/WorkItem';
+import Work from '../components/Work';
 import Section from '../components/Section';
-// import Image from "../components/image";
-// import SEO from "../components/seo";
-
+import SEO from '../components/SEO';
 
 const IndexPage = () => {
   return(
     <Layout>
+      <SEO />
+      
       <Section id="work">
-        <WorkGrid
-          hasMore={true}
-        >
-          {work.map(p => (
-            <WorkItem
-              title={p.title}
-              cover={p.images[0].src}
-              key={p.title}
-            />
-          ))}
-        </WorkGrid>
+        <Work />
       </Section>
 
       <Section id="about">
         <About />
+      </Section>
+      
+      <Section id="contact">
+        <Contact />
       </Section>
     </Layout>
   );
