@@ -2,21 +2,12 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Fade as Fader } from 'react-slideshow-image';
 
+import { WorkNode } from '../types/index';
+
 import Title from './Title';
 
-interface ProjectImageNode {
-  src: string;
-  alt: string;
-}
-
-interface ProjectNode {
-    title: string;
-    description: string;
-    images: ProjectImageNode[];
-}
-
 interface IWorkDetailProps {
-  project: ProjectNode;
+  project: WorkNode;
 }
 
 const WorkTitle = styled(Title)`
@@ -35,7 +26,9 @@ const WorkTitle = styled(Title)`
 
 const WorkDescription = styled.div``;
 
-const StyWorkDetail = styled.div``;
+const StyWorkDetail = styled.div`
+  padding-bottom: 50px;
+`;
 
 const SliderWrap = styled.div``;
 
@@ -91,17 +84,17 @@ const WorkDetail = ({ project }: IWorkDetailProps) => {
           {...config}
           ref={$slider}
         >
-          { project.images.map(({ src, alt }) => (
+          { project.frontmatter.images.map(({ src, alt }) => (
             <Slide key={`img-${src}`}>
-              <img src={src} alt={alt}/>
+              <img src={`/work/${project.frontmatter.slug}/${src}`} alt={alt}/>
             </Slide>
           )) }
         </Fader>
 
         <SliderNav>
-          { project.images.map(({ src }, i) => (
+          { project.frontmatter.images.map(({ src }, i) => (
             <SliderNavBtn
-              ariaLabel={`Go to slide ${i+1}`}
+              aria-label={`Go to slide ${i+1}`}
               active={slide === i}
               onClick={() => {
                 if(i === slide) return;
@@ -115,12 +108,10 @@ const WorkDetail = ({ project }: IWorkDetailProps) => {
       </SliderWrap>
 
       <WorkTitle>
-        <h1>{ project.title }</h1>
+        <h1>{ project.frontmatter.title }</h1>
       </WorkTitle>
 
-      <WorkDescription>
-        <p>{ project.description }</p>
-      </WorkDescription>
+      <WorkDescription dangerouslySetInnerHTML={{ __html: project.html }} />
     </StyWorkDetail>
   );
 }

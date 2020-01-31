@@ -40,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: 'Open Sans', sans-serif;
   }
+
+  body.ReactModal__Body--open {
+    overflow: hidden;
+  }
 `;
 
 const PageWrap = styled.main`

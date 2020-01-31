@@ -4,7 +4,7 @@ const Title = styled.div`
   position: relative;
   margin-bottom: 15px;
 
-  h1,h2,h3,h4,h5 {
+  >* {
     display: inline-block;
     position: relative;
     z-index: 10;
@@ -23,6 +23,14 @@ const Title = styled.div`
     right: 0;
     transform: translateY(-50%);
     background: ${({ theme }) => theme.color.brand};
+  }
+
+  @media (max-width: 609px) {
+    text-align: center;
+    
+    >* {
+      padding-left: 20px;
+    }
   }
 `;
 

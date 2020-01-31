@@ -1,9 +1,5 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { ThemeProvider } from 'styled-components';
-
-import theme from '../config/theme';
-import { work } from '../data/work.json';
 
 import About from '../components/About';
 import Contact from '../components/Contact';
@@ -21,7 +17,12 @@ const IndexPage = () => {
           node {
             frontmatter {
               title
+              slug
               cover
+              images {
+                src
+                alt
+              }
             }
             html
           }
@@ -29,8 +30,7 @@ const IndexPage = () => {
       }
     }
   `);
-
-  console.log(work);
+  console.log(1, work)
   
   return(
     <Layout>

@@ -1,10 +1,11 @@
 ---
 title: Year of the Rat
+slug: year-of-the-rat
 cover: year-of-the-rat.jpg
 images:
-- src: ../images/gatsby-astronaut.png
+- src: year-of-the-rat.jpg
   alt: derp
-- src: ../images/gatsby-icon.png
+- src: year-of-the-rat.jpg
   alt: yes
 ---
 

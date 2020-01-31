@@ -40,6 +40,8 @@ const Work = (props: IWorkProps) => {
     return props.work.slice(0, limit);
   }, [limit]);
 
+  console.log(2, modal)
+
   return(
     <>
       <WorkGrid
@@ -47,10 +49,10 @@ const Work = (props: IWorkProps) => {
         onLoadMore={() => setLimit(limit + 6)}
       >
         {workItems.map(({ node }, i) => {
-          console.log('nooo', node)
           return(
             <WorkItem
               title={node.frontmatter.title}
+              slug={node.frontmatter.slug}
               cover={node.frontmatter.cover}
               onClick={() => setModal(node)}
               key={node.frontmatter.title+i}
@@ -76,7 +78,8 @@ const Work = (props: IWorkProps) => {
             overflow: 'visible',
             width: '100%',
             maxWidth: '700px',
-            background: 'none'
+            background: 'none',
+            overflowY: 'auto'
           }
         }}
       >

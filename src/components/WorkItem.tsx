@@ -45,12 +45,13 @@ const StyWorkItem = styled.button`
 
 interface IWorkItemProps {
   title: string;
+  slug: string;
   cover: string;
   onClick: () => void
 }
 
-const WorkItem = ({ title, cover, onClick }: IWorkItemProps) => {
-  console.log('c', cover, title)
+const WorkItem = ({ title, slug, cover, onClick }: IWorkItemProps) => {
+  // console.log('c', cover, title);
   return(
     <StyWorkItem
       aria-label={`View more information`}
@@ -58,7 +59,7 @@ const WorkItem = ({ title, cover, onClick }: IWorkItemProps) => {
     >
       <p>{title}</p>
       <img 
-        src={cover} 
+        src={`/work/${slug}/${cover}`}
         alt={title}
       />
     </StyWorkItem>

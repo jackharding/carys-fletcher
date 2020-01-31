@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import { picture, bio } from '../data/about';
+import { bio } from '../data/about';
 
 import Title from './Title';
 
@@ -21,25 +22,51 @@ const ProfilePicture = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 609px) {
+    float: none;
+    margin: 10px auto 15px;
+  }
 `;
 
-const Bio = styled.div``;
+const Bio = styled.div`
+  @media (max-width: 609px) {
+    text-align: center;
+  }
+`;
 
 const BioTitle = styled(Title)`
   &:after {
     width: calc(100% - 250px);
+
+    @media (max-width: 609px) {
+      width: 100%;
+    }
   }
 `;
 
 const BioText = styled.div``;
 
 const About = () => {
+
+  const { carys } = useStaticQuery(graphql`
+    query {
+      carys: file(relativePath: { eq: "general/carys-spud.jpg" }) {
+        childImageSharp {
+          fixed(width: 200) {
+            srcSet
+          }
+        }
+      }
+    }
+  `);
+
   return(
     <StyAbout>
       <ProfilePicture>
         <img 
-          src={picture}
-          alt="Carys Fletcher wearing fetching reindeer nose glasses"
+          srcSet={carys.childImageSharp.fixed.srcSet}
+          alt="Carys Fletcher with Spud the dog"
         />
       </ProfilePicture>
 
