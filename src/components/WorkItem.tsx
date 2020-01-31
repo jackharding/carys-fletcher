@@ -49,7 +49,8 @@ interface IWorkItemProps {
   onClick: () => void
 }
 
-const WorkItem = ({ title, cover, onClick }: IWorkItemProps): React.ReactNode => {
+const WorkItem = ({ title, cover, onClick }: IWorkItemProps) => {
+  console.log('c', cover, title)
   return(
     <StyWorkItem
       aria-label={`View more information`}

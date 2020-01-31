@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
 import theme from '../config/theme';
@@ -13,12 +13,31 @@ import Section from '../components/Section';
 import SEO from '../components/SEO';
 
 const IndexPage = () => {
+
+  const { allMarkdownRemark: { edges: work } } = useStaticQuery(graphql`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              title
+              cover
+            }
+            html
+          }
+        }
+      }
+    }
+  `);
+
+  console.log(work);
+  
   return(
     <Layout>
       <SEO />
       
       <Section id="work">
-        <Work />
+        <Work work={work} />
       </Section>
 
       <Section id="about">

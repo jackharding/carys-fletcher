@@ -35,26 +35,11 @@ const StyNav = styled.nav`
   }
 `;
 
-const menuItems = [
-  {
-      link: '#work',
-      label: 'Work'
-  },
-  {
-      link: '#about',
-      label: 'About'
-  },
-  {
-      link: '#contact',
-      label: 'Contact'
-  },
-]; 
-
 const Header = () => {
 
   const { logo } = useStaticQuery(graphql`
     query {
-      logo: file(relativePath: { eq: "logo.png" }) {
+      logo: file(relativePath: { eq: "general/logo.png" }) {
         childImageSharp {
           fixed(width: 200) {
             srcSet

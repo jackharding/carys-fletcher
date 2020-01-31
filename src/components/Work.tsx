@@ -2,11 +2,15 @@ import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
-import { work } from '../data/work.json';
+import { WorkEdge, WorkNode } from '../types/index';
 
 import WorkItem from './WorkItem';
 import WorkGrid from './WorkGrid';
 import WorkDetail from './WorkDetail';
+
+interface IWorkProps {
+  work: WorkEdge[];
+}
 
 const CloseModal = styled.button`
   position: fixed;
@@ -27,29 +31,32 @@ const CloseModal = styled.button`
   }
 `;
 
-const Work = () => {
+const Work = (props: IWorkProps) => {
 
   const [modal, setModal] = useState(null);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(1);
 
   const workItems = useMemo(() => {
-    return work.slice(0, limit);
+    return props.work.slice(0, limit);
   }, [limit]);
 
   return(
     <>
       <WorkGrid
-        hasMore={limit < work.length}
+        hasMore={limit < props.work.length}
         onLoadMore={() => setLimit(limit + 6)}
       >
-        {workItems.map(p => (
-          <WorkItem
-            title={p.title}
-            cover={p.images[0].src}
-            onClick={() => setModal(p)}
-            key={p.title}
-          />
-        ))}
+        {workItems.map(({ node }, i) => {
+          console.log('nooo', node)
+          return(
+            <WorkItem
+              title={node.frontmatter.title}
+              cover={node.frontmatter.cover}
+              onClick={() => setModal(node)}
+              key={node.frontmatter.title+i}
+            />
+          );
+        })}
       </WorkGrid>
 
       <Modal
