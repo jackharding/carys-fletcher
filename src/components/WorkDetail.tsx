@@ -91,20 +91,22 @@ const WorkDetail = ({ project }: IWorkDetailProps) => {
           )) }
         </Fader>
 
-        <SliderNav>
-          { project.frontmatter.images.map(({ src }, i) => (
-            <SliderNavBtn
-              aria-label={`Go to slide ${i+1}`}
-              active={slide === i}
-              onClick={() => {
-                if(i === slide) return;
+        { project.frontmatter.images.length > 1 ? (
+          <SliderNav>
+            { project.frontmatter.images.map(({ src }, i) => (
+              <SliderNavBtn
+                aria-label={`Go to slide ${i+1}`}
+                active={slide === i}
+                onClick={() => {
+                  if(i === slide) return;
 
-                $slider.current.goTo(i);
-                setSlide(i);
-              }}
-            />
-          )) }
-        </SliderNav>
+                  $slider.current.goTo(i);
+                  setSlide(i);
+                }}
+              />
+            )) }
+          </SliderNav>
+        ) : null }
       </SliderWrap>
 
       <WorkTitle>

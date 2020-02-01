@@ -50,7 +50,7 @@ const Contact = () => {
       </ContactLink>
 
       <ContactLink 
-        href="https://web.archive.org/web/20180203180542/https://www.instagram.com/carysfletcherillustration"
+        href="https://www.instagram.com/carysfletcherillustration"
         target="_blank"
         ariaLabel={`Find me on Instagram as carysfletcherillustration`}
       >

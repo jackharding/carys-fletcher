@@ -6,8 +6,8 @@ const StyHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 15px;
-  margin-bottom: 50px;
+  padding-top: 35px;
+  margin-bottom: 35px;
 `;
 
 const StyNav = styled.nav`
@@ -50,7 +50,7 @@ const Header = () => {
   `);
 
   return (
-    <StyHeader>
+    <StyHeader role="header">
       <img 
         srcSet={logo.childImageSharp.fixed.srcSet}
         alt="Carys Fletcher Illustration logo" 

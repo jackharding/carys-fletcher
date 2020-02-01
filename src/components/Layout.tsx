@@ -15,6 +15,7 @@ interface ILayoutProps {
 const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
+    font-size: 16px;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -25,6 +26,11 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     color: #050505;
+  }
+
+  body {
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
   }
 
   * {
@@ -38,7 +44,6 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
   }
 
   body.ReactModal__Body--open {

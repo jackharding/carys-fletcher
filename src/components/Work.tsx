@@ -34,7 +34,7 @@ const CloseModal = styled.button`
 const Work = (props: IWorkProps) => {
 
   const [modal, setModal] = useState(null);
-  const [limit, setLimit] = useState(1);
+  const [limit, setLimit] = useState(6);
 
   const workItems = useMemo(() => {
     return props.work.slice(0, limit);
@@ -69,6 +69,7 @@ const Work = (props: IWorkProps) => {
             display: 'flex',
             justifyContent: 'center',
             zIndex: 10,
+            overflowY: 'auto',
             background: 'rgba(255,255,255,0.9)'
           },
           content: {
@@ -79,7 +80,6 @@ const Work = (props: IWorkProps) => {
             width: '100%',
             maxWidth: '700px',
             background: 'none',
-            overflowY: 'auto'
           }
         }}
       >

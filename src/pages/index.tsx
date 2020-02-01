@@ -30,8 +30,7 @@ const IndexPage = () => {
       }
     }
   `);
-  console.log(1, work)
-  
+
   return(
     <Layout>
       <SEO />
