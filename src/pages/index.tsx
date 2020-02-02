@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import Work from '../components/Work';
 import Section from '../components/Section';
 import SEO from '../components/SEO';
+import SR from '../components/SR';
 
 const IndexPage = () => {
 
@@ -35,15 +36,28 @@ const IndexPage = () => {
     <Layout>
       <SEO />
       
-      <Section id="work">
+      <Section 
+        id="work"
+        aria-labelledby="work-title"
+      >
+        <SR 
+          id="work-title"
+          as="h2"
+        >My work</SR>
         <Work work={work} />
       </Section>
 
-      <Section id="about">
+      <Section 
+        id="about"
+        aria-labelledby="about-title"
+      >
         <About />
       </Section>
       
-      <Section id="contact">
+      <Section 
+        id="contact"
+        aria-labelledby="contact-title"
+      >
         <Contact />
       </Section>
     </Layout>

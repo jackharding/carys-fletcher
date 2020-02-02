@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Modal from 'react-modal';
 
+import globalStyles from '../styles/global';
+import slickStyles from '../styles/slick';
 import theme from '../config/theme';
 import Header from './Header';
 import Footer from './Footer';
@@ -13,42 +15,8 @@ interface ILayoutProps {
 }
 
 const GlobalStyles = createGlobalStyle`
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-    color: rgb(68, 68, 68);
-  }
-
-  html,body {
-    padding: 0;
-    margin: 0;
-    color: #050505;
-  }
-
-  body {
-    line-height: 1.5;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  * {
-    color: inherit;
-  }
-
-  h1,h2,h3,h4 {
-    margin: 0;
-    font-family: 'rasa', serif;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  body.ReactModal__Body--open {
-    overflow: hidden;
-  }
+  ${globalStyles};
+  ${slickStyles};
 `;
 
 const PageWrap = styled.main`

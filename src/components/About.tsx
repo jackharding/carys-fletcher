@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { bio } from '../data/about';
-
+import Text from './Text';
 import Title from './Title';
 
 const StyAbout = styled.div``;
@@ -45,8 +44,6 @@ const BioTitle = styled(Title)`
   }
 `;
 
-const BioText = styled.div``;
-
 const About = () => {
 
   const { carys } = useStaticQuery(graphql`
@@ -72,12 +69,18 @@ const About = () => {
 
       <Bio>
         <BioTitle>
-          <h2>About Me</h2>
+          <h2 id="about-title">About Me</h2>
         </BioTitle>
 
-        <BioText>
-          <p>{bio}</p>
-        </BioText>
+        <Text>
+          <p>Shw mae! My name is Carys Fletcher and I’m a freelance illustrator living in Cardiff, South Wales. My work is often about ethical, environmental and social issues and I try to inject a little bit of fun into everyday life!</p>
+          <ul>
+            <li>Culpa cupidatat do pariatur proident. Occaecat Lorem velit consequat occaecat cillum sit eiusmod veniam commodo.</li>
+            <li>Et aliqua laborum elit enim sint magna minim occaecat esse cupidatat consequat et officia. Laboris aliqua consequat aute commodo excepteur ea minim magna deserunt nisi excepteur. Sit sint elit eiusmod proident pariatur laboris. Irure deserunt aute ad nisi ad.</li>
+            <li>Excepteur deserunt fugiat amet adipisicing pariatur elit consectetur ut occaecat.</li>
+          </ul>
+          <p>Here is also an <a href="#" title="An example link that is really cool">example link</a> that I think should look okay.</p>
+        </Text>
       </Bio>
     </StyAbout>
   );

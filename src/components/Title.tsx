@@ -22,7 +22,7 @@ const Title = styled.div`
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background: ${({ theme }) => theme.color.brand};
+    background: ${({ theme }) => theme.color.brandDarker};
   }
 
   @media (max-width: 609px) {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Section = styled.div`
+const Section = styled.section`
   margin-bottom: 80px;
 `;
 
