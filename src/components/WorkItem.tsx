@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SR from './SR';
+
 const StyWorkItem = styled.button`
   position: relative;
   height: 0;
@@ -36,10 +38,15 @@ const StyWorkItem = styled.button`
     transition: .3s;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     p {
       opacity: 1;
     }
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -51,16 +58,16 @@ interface IWorkItemProps {
 }
 
 const WorkItem = ({ title, slug, cover, onClick }: IWorkItemProps) => {
-  // console.log('c', cover, title);
   return(
     <StyWorkItem
-      aria-label={`View more information`}
       onClick={onClick}
+      aria-labelledby={`work-${slug}`}
     >
-      <p>{title}</p>
+      <SR id={`work-${slug}`}>{ title }</SR>
+      <p aria-hidden="true">{title}</p>
       <img 
         src={`/work/${slug}/${cover}`}
-        alt={title}
+        alt={""}
       />
     </StyWorkItem>
   );

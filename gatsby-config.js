@@ -12,6 +12,19 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
     {
+      resolve: 'gatsby-plugin-react-axe',
+      options: {
+        // Integrate react-axe in production. This defaults to false.
+        showInProduction: false,
+
+        // Options to pass to axe-core.
+        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
+        axeOptions: {
+          // Your axe-core options.
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [

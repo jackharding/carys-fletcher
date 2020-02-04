@@ -7,7 +7,7 @@ const StyFooter = styled.footer`
   left: 0;
   width: 100%;
   padding: 35px 0;
-  background: ${({ theme }) => theme.color.brand};
+  background: ${({ theme }) => theme.color.dark};
 
   p {
     margin: 0;
@@ -25,6 +25,11 @@ const StyFooter = styled.footer`
     color: #fff;
     
     &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline: 0;
       text-decoration: underline;
     }
   }
