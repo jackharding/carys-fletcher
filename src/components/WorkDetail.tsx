@@ -44,10 +44,11 @@ const SliderNavBtn = styled.button`
   padding: 7px;
   border: 0;
   border-radius: 50%;
-  background: ${({ active, theme }) => active ? theme.color.brand : theme.color.disabled};
+  background: ${({ active, theme }) =>
+    active ? theme.color.brand : theme.color.disabled};
   cursor: pointer;
 
-  +* {
+  + * {
     margin-left: 7px;
   }
 `;
@@ -68,52 +69,48 @@ const config = {
   arrows: false,
   infinite: false,
   transitionDuration: 500,
-}
+};
 
 const WorkDetail = ({ project }: IWorkDetailProps) => {
-
   const [slide, setSlide] = useState(0);
   const $slider = useRef(null);
 
-  if(!project) return null;
+  if (!project) return null;
 
   return (
     <StyWorkDetail>
       <SliderWrap>
-        <Fader
-          {...config}
-          ref={$slider}
-        >
-          { project.frontmatter.images.map(({ src, alt }) => (
+        <Fader {...config} ref={$slider}>
+          {project.frontmatter.images.map(({ src, alt }) => (
             <Slide key={`img-${src}`}>
-              <img src={`/work/${project.frontmatter.slug}/${src}`} alt={alt}/>
+              <img src={`/work/${project.frontmatter.slug}/${src}`} alt={alt} />
             </Slide>
-          )) }
+          ))}
         </Fader>
 
         <SliderNav>
-          { project.frontmatter.images.map(({ src }, i) => (
+          {project.frontmatter.images.map(({ src }, i) => (
             <SliderNavBtn
-              aria-label={`Go to slide ${i+1}`}
+              aria-label={`Go to slide ${i + 1}`}
               active={slide === i}
               onClick={() => {
-                if(i === slide) return;
+                if (i === slide) return;
 
                 $slider.current.goTo(i);
                 setSlide(i);
               }}
             />
-          )) }
+          ))}
         </SliderNav>
       </SliderWrap>
 
       <WorkTitle>
-        <h1>{ project.frontmatter.title }</h1>
+        <h1>{project.frontmatter.title}</h1>
       </WorkTitle>
 
       <WorkDescription dangerouslySetInnerHTML={{ __html: project.html }} />
     </StyWorkDetail>
   );
-}
+};
 
 export default WorkDetail;

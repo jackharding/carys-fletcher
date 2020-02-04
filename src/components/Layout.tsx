@@ -66,11 +66,11 @@ const Layout = ({ children }: ILayoutProps) => {
 
       <AppContainer>
         <Header />
-        <PageWrap>{ children }</PageWrap>
+        <PageWrap>{children}</PageWrap>
         <Footer />
       </AppContainer>
     </ThemeProvider>
   );
-}
+};
 
 export default Layout;

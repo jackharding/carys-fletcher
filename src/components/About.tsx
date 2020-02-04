@@ -48,7 +48,6 @@ const BioTitle = styled(Title)`
 const BioText = styled.div``;
 
 const About = () => {
-
   const { carys } = useStaticQuery(graphql`
     query {
       carys: file(relativePath: { eq: "general/carys-spud.jpg" }) {
@@ -61,10 +60,10 @@ const About = () => {
     }
   `);
 
-  return(
+  return (
     <StyAbout>
       <ProfilePicture>
-        <img 
+        <img
           srcSet={carys.childImageSharp.fixed.srcSet}
           alt="Carys Fletcher with Spud the dog"
         />
@@ -81,6 +80,6 @@ const About = () => {
       </Bio>
     </StyAbout>
   );
-}
+};
 
 export default About;
