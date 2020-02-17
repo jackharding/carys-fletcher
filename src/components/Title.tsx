@@ -1,37 +1,37 @@
 import styled from 'styled-components';
 
 const Title = styled.div`
-  position: relative;
-  margin-bottom: 15px;
+	margin-bottom: 15px;
+	position: relative;
 
-  >* {
-    display: inline-block;
-    position: relative;
-    z-index: 10;
-    padding-right: 20px;
-    font-size: 36px;
-    background: #fff;
-  }
+	> * {
+		background: #fff;
+		display: inline-block;
+		font-size: 36px;
+		padding-right: 20px;
+		position: relative;
+		z-index: 10;
+	}
 
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background: ${({ theme }) => theme.color.brandDarker};
-  }
+	&:after {
+		background: ${({ theme }) => theme.color.brandDarker};
+		content: '';
+		display: block;
+		height: 1px;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+	}
 
-  @media (max-width: 609px) {
-    text-align: center;
-    
-    >* {
-      padding-left: 20px;
-    }
-  }
+	@media (max-width: 609px) {
+		text-align: center;
+
+		> * {
+			padding-left: 20px;
+		}
+	}
 `;
 
 export default Title;

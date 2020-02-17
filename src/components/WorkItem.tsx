@@ -4,73 +4,67 @@ import styled from 'styled-components';
 import SR from './SR';
 
 const StyWorkItem = styled.button`
-  position: relative;
+	border: 0;
+  cursor: pointer;
   height: 0;
   padding-top: 100%;
-  border: 0;
-  cursor: pointer;
+  position: relative;
 
   img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   p {
-    display: flex;
-    justify-content: center;
     align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    font-family: 'rasa', serif;
+    font-size: 22px;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0 15px;
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0 15px;
-    z-index: 2;
-    opacity: 0;
-    font-size: 22px;
-    font-family: 'rasa', serif;
-    background: rgba(255, 255, 255, 0.8);
     transition: .3s;
-  }
+    width: 100%;
+    z-index: 2;
+	}
 
-  &:hover,
-  &:focus {
-    p {
-      opacity: 1;
-    }
-  }
+	&:hover,
+	&:focus {
+		p {
+			opacity: 1;
+		}
+	}
 
-  &:focus {
-    outline: 0;
-  }
+	&:focus {
+		outline: 0;
+	}
 `;
 
 interface IWorkItemProps {
-  title: string;
-  slug: string;
-  cover: string;
-  onClick: () => void
+	title: string;
+	slug: string;
+	cover: string;
+	onClick: () => void;;
 }
 
 const WorkItem = ({ title, slug, cover, onClick }: IWorkItemProps) => {
-  return(
-    <StyWorkItem
-      onClick={onClick}
-      aria-labelledby={`work-${slug}`}
-    >
-      <SR id={`work-${slug}`}>{ title }</SR>
-      <p aria-hidden="true">{title}</p>
-      <img 
-        src={`/work/${slug}/${cover}`}
-        alt={""}
-      />
-    </StyWorkItem>
-  );
-}
+	return (
+		<StyWorkItem onClick={onClick} aria-labelledby={`work-${slug}`}>
+			<SR id={`work-${slug}`}>{title}</SR>
+			<p aria-hidden="true">{title}</p>
+			<img src={`/work/${slug}/${cover}`} alt={''} />
+		</StyWorkItem>
+	);
+};
 
 export default WorkItem;

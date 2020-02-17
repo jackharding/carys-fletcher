@@ -11,7 +11,7 @@ import Footer from './Footer';
 Modal.setAppElement('#___gatsby');
 
 interface ILayoutProps {
-  children: any;
+	children: any;
 }
 
 const GlobalStyles = createGlobalStyle`
@@ -20,30 +20,30 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const PageWrap = styled.main`
-  width: 730px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 15px;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0 15px;
+	width: 730px;
 `;
 
 const AppContainer = styled.div`
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 115px;
+	min-height: 100vh;
+	padding-bottom: 115px;
+	position: relative;
 `;
 
 const Layout = ({ children }: ILayoutProps) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
+	return (
+		<ThemeProvider theme={theme}>
+			<GlobalStyles />
 
-      <AppContainer>
-        <Header />
-        <PageWrap>{children}</PageWrap>
-        <Footer />
-      </AppContainer>
-    </ThemeProvider>
-  );
+			<AppContainer>
+				<Header />
+				<PageWrap>{children}</PageWrap>
+				<Footer />
+			</AppContainer>
+		</ThemeProvider>
+	);
 };
 
 export default Layout;

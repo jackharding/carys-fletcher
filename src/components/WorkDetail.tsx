@@ -8,65 +8,65 @@ import Text from './Text';
 import Title from './Title';
 
 interface IWorkDetailProps {
-  project: WorkNode;
+	project: WorkNode;
 }
 
 const WorkTitle = styled(Title)`
-  margin-top: 40px;
-  margin-bottom: 10px;
+	margin-bottom: 10px;
+	margin-top: 40px;
 
-  h1 {
-    padding: 0;
-    background: none;
-  }
+	h1 {
+		background: none;
+		padding: 0;
+	}
 
-  &:after {
-    display: none;
-  }
+	&:after {
+		display: none;
+	}
 `;
 
 const StyWorkDetail = styled.div`
-  padding-bottom: 50px;
+	padding-bottom: 50px;
 `;
 
 const Slide = styled.div`
-  height: 500px;
+	height: 500px;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    margin: 0 auto;
-  }
+	img {
+		height: 100%;
+		margin: 0 auto;
+		object-fit: contain;
+		width: 100%;
+	}
 `;
 
 const config = {
-  autoplay: false,
-  arrows: false,
-  infinite: false,
-  transitionDuration: 500,
+	autoplay: false,
+	arrows: false,
+	infinite: false,
+	transitionDuration: 500,
 };
 
-const WorkDetail = ({ project }: IWorkDetailProps) => {
-  if (!project) return null;
+const WorkDetail: ReactNode = ({ project }: IWorkDetailProps) => {
+	if (!project) return null;
 
-  return (
-    <StyWorkDetail>
-      <Slider>
-        {project.frontmatter.images.map(({ src, alt }) => (
-          <Slide key={`img-${src}`}>
-            <img src={`/work/${project.frontmatter.slug}/${src}`} alt={alt} />
-          </Slide>
-        ))}
-      </Slider>
+	return (
+		<StyWorkDetail>
+			<Slider>
+				{project.frontmatter.images.map(({ src, alt }) => (
+					<Slide key={`img-${src}`}>
+						<img src={`/work/${project.frontmatter.slug}/${src}`} alt={alt} />
+					</Slide>
+				))}
+			</Slider>
 
-      <WorkTitle>
-        <h1>{project.frontmatter.title}</h1>
-      </WorkTitle>
+			<WorkTitle>
+				<h1>{project.frontmatter.title}</h1>
+			</WorkTitle>
 
-      <Text dangerouslySetInnerHTML={{ __html: project.html }} />
-    </StyWorkDetail>
-  );
+			<Text dangerouslySetInnerHTML={{ __html: project.html }} />
+		</StyWorkDetail>
+	);
 };
 
 export default WorkDetail;
