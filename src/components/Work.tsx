@@ -1,17 +1,21 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useRef, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-
-import { WorkEdge } from '../types/index';
 
 import SR from './SR';
 import WorkItem from './WorkItem';
 import WorkGrid from './WorkGrid';
-import WorkDetail from './WorkDetail';
+import Slider from './Slider';
+import Image from './Image';
 
-interface IWorkProps {
-	work: WorkEdge[];
-}
+const Slide = styled.div`
+	max-height: 87vh;
+	width: 90vw;
+
+	> * {
+		margin: 0 auto;
+	}
+`;
 
 const CloseModal = styled.button`
 	background: none;
@@ -37,40 +41,111 @@ const CloseModal = styled.button`
 	}
 `;
 
-const Work = (props: IWorkProps) => {
-	const [modal, setModal] = useState(null);
+const workItems = [
+	{
+		fileName: 'burt.jpg',
+		title: 'Burt',
+	},
+
+	{
+		fileName: 'he-still-dreams-of-ants.jpg',
+		title: 'He still dreams of ants',
+	},
+	{
+		fileName: 'quack.jpg',
+		title: 'Quack',
+	},
+	{
+		fileName: 'self-portrait.jpg',
+		title: 'Self portrait',
+	},
+	{
+		fileName: 'babirusa.jpg',
+		title: 'Babirusa',
+	},
+	{
+		fileName: 'moss-moose.jpg',
+		title: 'Moss Moose',
+	},
+	{
+		fileName: 'old-tommy-two-humps.jpg',
+		title: 'Old Tommy Two-Humps',
+	},
+	{
+		fileName: 'greyhound.jpg',
+		title: 'Greyhound',
+	},
+	{
+		fileName: 'he-has-an-idea.jpg',
+		title: 'He has an idea',
+	},
+	{
+		fileName: 'brahman.jpg',
+		title: 'Brahman',
+	},
+	{
+		fileName: 'year-of-the-rat.jpg',
+		title: 'Year of the Rat',
+	},
+	{
+		fileName: 'sit.jpg',
+		title: 'Sit',
+	},
+	{
+		fileName: 'lady-in-blue.jpg',
+		title: 'Lady in blue',
+	},
+	{
+		fileName: 'squirrel.jpg',
+		title: 'Squirrel',
+	},
+	{
+		fileName: 'three-dancing-monkeys.jpg',
+		title: 'Three Dancing Monkeys',
+	},
+];
+
+const Work: React.FC = () => {
+	const [modalIndex, setModalIndex] = useState(undefined);
 	const [limit, setLimit] = useState(6);
 
-	const workItems = useMemo(() => {
-		return props.work.slice(0, limit);
-	}, [limit]);
+	const work = useMemo(() => workItems.slice(0, limit), [limit]);
+
+	const $slider = useRef(null);
+
+	useEffect(() => {
+		console.dir($slider);
+		console.log(modalIndex);
+		if (!$slider || !$slider.current) return;
+		$slider.current.slickGoTo(modalIndex);
+	}, [$slider, modalIndex]);
 
 	return (
 		<>
-			<WorkGrid hasMore={limit < props.work.length} onLoadMore={() => setLimit(limit + 6)}>
-				{workItems.map(({ node }, i) => {
+			<WorkGrid hasMore={limit < workItems.length}
+				onLoadMore={() => setLimit(limit + 6)}>
+				{work.map(({ fileName, title }, i) => {
 					return (
 						<WorkItem
-							title={node.frontmatter.title}
-							slug={node.frontmatter.slug}
-							cover={node.frontmatter.cover}
-							onClick={() => setModal(node)}
-							key={node.frontmatter.title + i}
+							title={title}
+							fileName={fileName}
+							onClick={() => setModalIndex(i)}
+							key={`tile${fileName}`}
 						/>
 					);
 				})}
 			</WorkGrid>
 
 			<Modal
-				isOpen={!!modal}
-				onRequestClose={() => setModal(null)}
+				isOpen={typeof modalIndex !== 'undefined'}
+				onRequestClose={() => setModalIndex(null)}
 				style={{
 					overlay: {
 						display: 'flex',
 						justifyContent: 'center',
 						zIndex: 10,
 						overflowY: 'auto',
-						background: 'rgba(255,255,255,0.9)',
+						background: 'rgba(255,255,255,0.95)',
 					},
 					content: {
 						position: 'static',
@@ -78,19 +153,33 @@ const Work = (props: IWorkProps) => {
 						border: 0,
 						overflow: 'visible',
 						width: '100%',
-						maxWidth: '700px',
 						background: 'none',
 					},
 				}}
 			>
-				<CloseModal onClick={() => setModal(null)}>
+				<CloseModal onClick={() => setModalIndex(undefined)}>
 					<SR>Close modal</SR>
-					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+					<svg focusable="false"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512">
 						<path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z" />
 					</svg>
 				</CloseModal>
 
-				<WorkDetail project={modal} />
+				<Slider ref={$slider}>
+					{work.map(({ title, fileName, alt }, i) => {
+						return (
+							<Slide key={`slide${fileName}`}>
+								<Image
+									fileName={fileName}
+									alt={alt || `${title} by Carys Fletcher`}
+									objectFit="contain"
+									style={{ height: '645px', width: '800px' }}
+								/>
+							</Slide>
+						);
+					})}
+				</Slider>
 			</Modal>
 		</>
 	);

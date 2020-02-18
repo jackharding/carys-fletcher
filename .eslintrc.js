@@ -75,6 +75,22 @@ module.exports = {
 		],
 		"@typescript-eslint/interface-name-prefix": 0,
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+		"react/jsx-first-prop-new-line": [
+			1,
+			"multiline"
+		],
+		"react/no-unescaped-entities": 0,
+		"react/jsx-max-props-per-line": [
+			1,
+			{
+				"maximum": 1
+			}
+		],
+		"react/jsx-indent-props": [
+			1,
+			"tab"
+		],
+		"react/jsx-closing-bracket-location": 1,
 		"better-styled-components/sort-declarations-alphabetically": 2
 	}
 }

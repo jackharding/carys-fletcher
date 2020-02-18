@@ -100,6 +100,35 @@ export default css`
 		display: none;
 	}
 
+	.slick-arrow {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		padding: 0 14px;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		color: ${({ theme }) => theme.color.brandDarker};
+		z-index: 2;
+
+		svg {
+			width: 20px;
+			height: auto;
+
+			g {
+				fill: currentColor;
+			}
+		}
+
+		&.slick-prev {
+			left: 0;
+		}
+
+		&.slick-next {
+			right: 0;
+		}
+	}
+
 	.slick-dots {
 		display: flex !important;
 		justify-content: center;
