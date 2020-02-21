@@ -7,7 +7,9 @@ interface ISliderProps {
 
 const Arrow = ({ className, style, prev, onClick }) => {
 	return (
-		<button className={className} style={style} onClick={onClick}>
+		<button
+			className={className} style={style} onClick={onClick}
+		>
 			<svg
 				width="267px"
 				height="727px"
@@ -23,8 +25,10 @@ const Arrow = ({ className, style, prev, onClick }) => {
 						: {}
 				}
 			>
-				<g id="Page-1" stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
-					<g id="chevron" fill="#000000" fillRule="nonzero">
+				<g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+					<g
+						id="chevron" fill="#000000" fillRule="nonzero"
+					>
 						<path
 							d="M263.877202,352.612224 L18.3241762,4.22402776 C14.0533494,-1.5314856 7.32732258,-1.38095898 3.27068767,4.52650107 C-0.679852178,10.4339611 -0.679852178,19.6743079 3.27068767,25.5817679 L241.243921,363.215831 L3.27068767,701.001841 C-1.00013917,706.757354 -1.10623423,716.452121 3.05749664,722.359581 C7.11413155,728.418988 13.9472543,728.569514 18.1109852,722.662054 C18.2180811,722.510107 18.3241762,722.359581 18.3241762,722.359581 L263.877202,373.971384 C268.040933,368.062504 268.040933,358.519684 263.877202,352.612224 Z"
 							id="Path"
@@ -49,13 +53,20 @@ const settings = {
 	nextArrow: <Arrow />,
 };
 
-const Slider = React.forwardRef(({ children }, ref) => {
+const Slider = React.forwardRef<React.FC, { children: any; initialSlide: number }>(({ children, initialSlide }, ref) => {
 	return (
-		<SlickSlider ref={ref}
-			{...settings}>
+		<SlickSlider
+			ref={ref}
+			{...settings}
+			initialSlide={initialSlide}
+		>
 			{children}
 		</SlickSlider>
 	);
 });
+
+Slider.defaultProps = {
+	initialSlide: 0,
+}
 
 export default Slider;

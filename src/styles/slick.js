@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
 	.slick-slider {
+		/* opacity: 0; */
 		-khtml-user-select: none;
 		-moz-user-select: none;
 		-ms-touch-action: pan-y;
@@ -14,6 +15,11 @@ export default css`
 		position: relative;
 		touch-action: pan-y;
 		user-select: none;
+
+		&.active {
+			opacity: 1;
+			transition: 1s;
+		}
 	}
 	.slick-list {
 		display: block;

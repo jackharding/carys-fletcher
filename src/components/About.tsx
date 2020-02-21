@@ -70,31 +70,8 @@ const About = () => {
 
 				<Text>
 					<p>
-						Shw mae! My name is Carys Fletcher and I’m a freelance illustrator living in Cardiff,
-						South Wales. My work is often about ethical, environmental and social issues and I try
-						to inject a little bit of fun into everyday life!
-					</p>
-					<ul>
-						<li>
-							Culpa cupidatat do pariatur proident. Occaecat Lorem velit consequat occaecat
-							cillum sit eiusmod veniam commodo.
-						</li>
-						<li>
-							Et aliqua laborum elit enim sint magna minim occaecat esse cupidatat consequat et
-							officia. Laboris aliqua consequat aute commodo excepteur ea minim magna deserunt
-							nisi excepteur. Sit sint elit eiusmod proident pariatur laboris. Irure deserunt
-							aute ad nisi ad.
-						</li>
-						<li>
-							Excepteur deserunt fugiat amet adipisicing pariatur elit consectetur ut occaecat.
-						</li>
-					</ul>
-					<p>
-						Here is also an{' '}
-						<a href="#" title="An example link that is really cool">
-							example link
-						</a>{' '}
-						that I think should look okay.
+						Carys Fletcher is a freelance illustrator living in Bridgend, South Wales. Her work is often about ethical,
+						environmental and social issues. She tries to inject a little bit of fun in to everyday life!
 					</p>
 				</Text>
 			</Bio>

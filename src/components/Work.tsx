@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
@@ -14,6 +14,18 @@ const Slide = styled.div`
 
 	> * {
 		margin: 0 auto;
+	}
+`;
+
+const SlideInfo = styled.div`
+	height: 17vh;
+	margin-top: 20px;
+	text-align: center;
+	overflow: auto;
+
+	h3 {
+		/* color: ${({ theme }) => theme.color.brandDarker}; */
+		font-size: 1.35rem;
 	}
 `;
 
@@ -45,8 +57,8 @@ const workItems = [
 	{
 		fileName: 'burt.jpg',
 		title: 'Burt',
+		description: '<p>Old Tommy Two-Humps<br/>Trods on the dunes<br/>Where do he go, say we<br/>Alas<br/>He also not know</p>'
 	},
-
 	{
 		fileName: 'he-still-dreams-of-ants.jpg',
 		title: 'He still dreams of ants',
@@ -106,39 +118,27 @@ const workItems = [
 ];
 
 const Work: React.FC = () => {
-	const [modalIndex, setModalIndex] = useState(undefined);
+	const [modalIndex, setModalIndex] = useState<undefined | number>(undefined);
 	const [limit, setLimit] = useState(6);
 
 	const work = useMemo(() => workItems.slice(0, limit), [limit]);
 
-	const $slider = useRef(null);
-
-	useEffect(() => {
-		console.dir($slider);
-		console.log(modalIndex);
-		if (!$slider || !$slider.current) return;
-		$slider.current.slickGoTo(modalIndex);
-	}, [$slider, modalIndex]);
-
 	return (
 		<>
-			<WorkGrid hasMore={limit < workItems.length}
-				onLoadMore={() => setLimit(limit + 6)}>
+			<WorkGrid
+				hasMore={limit < workItems.length}
+				onLoadMore={() => setLimit(limit + 6)}
+			>
 				{work.map(({ fileName, title }, i) => {
 					return (
-						<WorkItem
-							title={title}
-							fileName={fileName}
-							onClick={() => setModalIndex(i)}
-							key={`tile${fileName}`}
-						/>
+						<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
 					);
 				})}
 			</WorkGrid>
 
 			<Modal
 				isOpen={typeof modalIndex !== 'undefined'}
-				onRequestClose={() => setModalIndex(null)}
+				onRequestClose={() => setModalIndex(undefined)}
 				style={{
 					overlay: {
 						display: 'flex',
@@ -166,16 +166,23 @@ const Work: React.FC = () => {
 					</svg>
 				</CloseModal>
 
-				<Slider ref={$slider}>
-					{work.map(({ title, fileName, alt }, i) => {
+				<Slider
+					initialSlide={modalIndex}
+				>
+					{workItems.map(({ title, fileName, description, alt }, i) => {
 						return (
 							<Slide key={`slide${fileName}`}>
 								<Image
 									fileName={fileName}
 									alt={alt || `${title} by Carys Fletcher`}
 									objectFit="contain"
-									style={{ height: '645px', width: '800px' }}
+									style={{ height: '72vh', width: '800px' }}
 								/>
+
+								<SlideInfo>
+									<h3>{title}</h3>
+									{description && <div dangerouslySetInnerHTML={{ __html: description }} />}
+								</SlideInfo>
 							</Slide>
 						);
 					})}

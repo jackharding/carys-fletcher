@@ -28,16 +28,19 @@ const StyHeader = styled.header`
 `;
 
 const StyNav = styled.nav`
+	width: 100%;
+	padding: 0 15px;
 	margin-top: 15px;
 
 	ul {
 		display: flex;
 		justify-content: space-between;
 		list-style: none;
-		margin: 0;
+		margin: 0 auto;
 		max-width: 100%;
 		padding: 0;
 		width: 420px;
+		max-width: 100%;
 	}
 
 	a {
