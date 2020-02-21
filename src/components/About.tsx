@@ -44,7 +44,7 @@ const BioTitle = styled(Title)`
 	}
 `;
 
-const About = () => {
+const About: React.FC = () => {
 	const { carys } = useStaticQuery(graphql`
 		query {
 			carys: file(relativePath: { eq: "general/carys-spud.jpg" }) {

@@ -60,7 +60,7 @@ const StyNav = styled.nav`
 	}
 `;
 
-const Header = () => {
+const Header: React.FC = () => {
 	const { logo } = useStaticQuery(graphql`
 		query {
 			logo: file(relativePath: { eq: "general/logo.png" }) {
