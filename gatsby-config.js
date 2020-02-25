@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		title: 'Carys Fletcher | Illustrator',
-		description: 'Portfolio website',
+		description: 'Carys Fletcher is a freelance illustrator living in Bridgend, South Wales.',
 		author: '@jackkh',
 	},
 	plugins: [
