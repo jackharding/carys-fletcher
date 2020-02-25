@@ -57,7 +57,6 @@ const workItems = [
 	{
 		fileName: 'burt.jpg',
 		title: 'Burt',
-		description: '<p>Old Tommy Two-Humps<br/>Trods on the dunes<br/>Where do he go, say we<br/>Alas<br/>He also not know</p>'
 	},
 	{
 		fileName: 'he-still-dreams-of-ants.jpg',
@@ -82,6 +81,7 @@ const workItems = [
 	{
 		fileName: 'old-tommy-two-humps.jpg',
 		title: 'Old Tommy Two-Humps',
+		description: '<p>Old Tommy Two-Humps<br/>Trods on the dunes<br/>Where do he go, say we<br/>Alas<br/>He also not know</p>'
 	},
 	{
 		fileName: 'greyhound.jpg',
