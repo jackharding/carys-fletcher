@@ -2,60 +2,53 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyFooter = styled.footer`
-	background: ${({ theme }) => theme.color.dark};
-	bottom: 0;
-	left: 0;
-	padding: 35px 0;
-	position: absolute;
-	width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: ${({ theme }) => theme.color.brandDarker};
 
-	p {
-		color: #fff;
-		font-family: 'Open Sans', sans-serif;
-		font-size: 15px;
-		margin: 0;
+    p {
+        margin: 0;
+        font-size: 15px;
+        color: #fff;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #fff;
+        
+        &:hover {
+            text-decoration: underline;
+        }
 
-		+ * {
-			margin-top: 5px;
-		}
-	}
-
-	a {
-		color: #fff;
-		text-decoration: none;
-
-		&:hover {
-			text-decoration: underline;
-		}
-
-		&:focus {
-			outline: 0;
-			text-decoration: underline;
-		}
-	}
+        &:focus {
+            outline: 0;
+            text-decoration: underline;
+        }
+    }
 `;
 
 const StyInner = styled.div`
-	margin: 0 auto;
-	max-width: 100%;
-	padding: 0 15px;
-	width: 730px;
+    display: flex;
+    justify-content: space-between;
+    width: 730px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 22px 15px;
+    /* border-top: 1px solid ${({ theme }) => theme.color.brand}; */
 `;
 
-const Footer = () => {
-	return (
-		<StyFooter>
-			<StyInner>
-				<p>&copy; {new Date().getFullYear()} Carys Fletcher</p>
-				<p>
-					Website by{' '}
-					<a href="https://jackharding.dev" target="_blank">
-						Jack Harding
-					</a>
-				</p>
-			</StyInner>
-		</StyFooter>
-	);
-};
+const Footer: React.FC = () => {
+  return (
+    <StyFooter>
+      <StyInner>
+        <p>&copy; {new Date().getFullYear()} Carys Fletcher</p>
+        <p>Website by <a href="https://jackharding.dev" target="_blank">Jack Harding</a></p>
+      </StyInner>
+    </StyFooter>
+  );
+}
 
 export default Footer;
