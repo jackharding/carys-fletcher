@@ -33,6 +33,8 @@ const Image: React.FC<ImageProps> = (props) => (
 				return n.node.relativePath.includes(props.fileName);
 			});
 
+			console.log(image)
+
 			if (!image) {
 				return null;
 			}

@@ -3,9 +3,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import About from '../components/About';
 import Contact from '../components/Contact';
+import FadeIn from '../components/FadeIn';
 import Layout from '../components/Layout';
 import Work from '../components/Work';
-import Section from '../components/Section';
 import SEO from '../components/SEO';
 import SR from '../components/SR';
 
@@ -37,20 +37,31 @@ const IndexPage = () => {
 		<Layout>
 			<SEO />
 
-			<Section id="work" aria-labelledby="work-title">
+			<section
+				id="work"
+				aria-labelledby="work-title"
+			>
 				<SR id="work-title" as="h2">
 					My work
 				</SR>
 				<Work work={work} />
-			</Section>
+			</section>
 
-			<Section id="about" aria-labelledby="about-title">
+			<FadeIn
+				id="about"
+				as="section"
+				aria-labelledby="about-title"
+			>
 				<About />
-			</Section>
+			</FadeIn>
 
-			<Section id="contact" aria-labelledby="contact-title">
+			<FadeIn
+				id="contact"
+				as="section"
+				aria-labelledby="contact-title"
+			>
 				<Contact />
-			</Section>
+			</FadeIn>
 		</Layout>
 	);
 };

@@ -43,4 +43,8 @@ export default css`
 	body.ReactModal__Body--open {
 		overflow: hidden;
 	}
+
+	section {
+		margin-bottom: 80px;
+	}
 `;

@@ -16,3 +16,7 @@ export interface WorkNode {
 export interface WorkEdge {
 	node: WorkNode;
 }
+
+export interface TabNode {
+	text: string;
+}

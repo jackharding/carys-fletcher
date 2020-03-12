@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
+import FadeIn from './FadeIn';
 import SR from './SR';
 
 const menuItems = [
@@ -19,7 +20,7 @@ const menuItems = [
 	},
 ];
 
-const StyHeader = styled.header`
+const Outer = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -39,7 +40,7 @@ const StyNav = styled.nav`
 		margin: 0 auto;
 		max-width: 100%;
 		padding: 0;
-		width: 420px;
+		width: 320px;
 		max-width: 100%;
 	}
 
@@ -74,8 +75,9 @@ const Header: React.FC = () => {
 	`);
 
 	return (
-		<StyHeader>
-			<img srcSet={logo.childImageSharp.fixed.srcSet} alt="Carys Fletcher Illustration logo" />
+
+		<Outer>
+			<img srcSet={logo.childImageSharp.fixed.srcSet} alt="Carys Fletcher Illustration logo" height={202} />
 
 			<SR as="h1">Carys Fletcher Illustration</SR>
 
@@ -88,7 +90,8 @@ const Header: React.FC = () => {
 					))}
 				</ul>
 			</StyNav>
-		</StyHeader>
+		</Outer>
+
 	);
 };
 

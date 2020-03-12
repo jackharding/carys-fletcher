@@ -62,8 +62,7 @@ const WorkItem: React.FC<IWorkItemProps> = ({ title, fileName, onClick }) => {
 			aria-labelledby={`work-${fileName}`}>
 			<SR id={`work-${fileName}`}>{title}</SR>
 			<p aria-hidden="true">{title}</p>
-			<Image fileName={fileName} alt=""
-			/>
+			<Image fileName={fileName} alt="" />
 		</StyWorkItem>
 	);
 };

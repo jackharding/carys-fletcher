@@ -8,6 +8,7 @@ const Button = styled.button`
 	cursor: pointer;
 	display: flex;
 	font-family: 'rasa', serif;
+	font-size: 1rem;
 	margin: 25px auto 0;
 	padding: 10px 25px;
 	transition: 0.3s;

@@ -2,11 +2,12 @@ import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
-import SR from './SR';
+import Image from './Image';
 import WorkItem from './WorkItem';
 import WorkGrid from './WorkGrid';
 import Slider from './Slider';
-import Image from './Image';
+import SR from './SR';
+import Tabs from './Tabs';
 
 const Slide = styled.div`
 	max-height: 87vh;
@@ -53,7 +54,18 @@ const CloseModal = styled.button`
 	}
 `;
 
-const workItems = [
+const workItemsCommercial = [
+	{
+		fileName: 'badger.jpg',
+		title: 'Badger',
+	},
+	{
+		fileName: 'mole.jpg',
+		title: 'Mole',
+	},
+];
+
+const workItemsPersonal = [
 	{
 		fileName: 'burt.jpg',
 		title: 'Burt',
@@ -119,22 +131,52 @@ const workItems = [
 
 const Work: React.FC = () => {
 	const [modalIndex, setModalIndex] = useState<undefined | number>(undefined);
+	const [activeIndex, setActiveIndex] = useState(0);
 	const [limit, setLimit] = useState(6);
 
-	const work = useMemo(() => workItems.slice(0, limit), [limit]);
+	const commercial = useMemo(() => workItemsCommercial.slice(0, limit), [limit]);
+	const personal = useMemo(() => workItemsPersonal.slice(0, limit), [limit]);
+
+	const activeWorkType = activeIndex === 0 ? commercial : personal;
 
 	return (
 		<>
-			<WorkGrid
-				hasMore={limit < workItems.length}
-				onLoadMore={() => setLimit(limit + 6)}
+			<Tabs
+				activeIndex={activeIndex}
+				onChange={setActiveIndex}
+				tabs={[
+					{
+						text: 'Commercial'
+					},
+					{
+						text: 'Personal',
+					},
+				]}
 			>
-				{work.map(({ fileName, title }, i) => {
-					return (
-						<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
-					);
-				})}
-			</WorkGrid>
+				{activeIndex === 0 ? (
+					<WorkGrid
+						hasMore={limit < workItemsCommercial.length}
+						onLoadMore={() => setLimit(limit + 6)}
+					>
+						{commercial.map(({ fileName, title }, i) => {
+							return (
+								<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
+							);
+						})}
+					</WorkGrid>
+				) : (
+						<WorkGrid
+							hasMore={limit < workItemsPersonal.length}
+							onLoadMore={() => setLimit(limit + 6)}
+						>
+							{personal.map(({ fileName, title }, i) => {
+								return (
+									<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
+								);
+							})}
+						</WorkGrid>
+					)}
+			</Tabs>
 
 			<Modal
 				isOpen={typeof modalIndex !== 'undefined'}
@@ -169,7 +211,7 @@ const Work: React.FC = () => {
 				<Slider
 					initialSlide={modalIndex}
 				>
-					{workItems.map(({ title, fileName, description, alt }, i) => {
+					{activeWorkType.map(({ title, fileName, description, alt }, i) => {
 						return (
 							<Slide key={`slide${fileName}`}>
 								<Image
