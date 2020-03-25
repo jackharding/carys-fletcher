@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import Button from './Button';
 
@@ -9,7 +10,7 @@ interface IWorkGridProps {
 	onLoadMore: () => void;
 }
 
-const StyWorkGrid = styled.div`
+const StyWorkGrid = styled(motion.div)`
 	display: grid;
 	grid-gap: 20px;
 	grid-template-columns: 1fr 1fr 1fr;

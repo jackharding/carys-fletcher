@@ -7,11 +7,17 @@ interface IFadeInProps {
 	as: string;
 	id: string;
 	className: string;
+	delay: number;
 	children: any;
 }
 
 const FadeIn: React.FC = ({
-	threshold, as, className, id, children,
+	threshold, 
+	as, 
+	className, 
+	id, 
+	delay, 
+	children,
 }: IFadeInProps) => {
 	const [appeared, setAppeared] = useState(false);
 	const [ref, visible] = useInView({
@@ -26,8 +32,6 @@ const FadeIn: React.FC = ({
 		}
 	}, [visible]);
 
-	console.log('appea', appeared)
-
 	return (
 		<Element
 			animate={{
@@ -40,6 +44,7 @@ const FadeIn: React.FC = ({
 			className={className}
 			id={id}
 			transition={{
+				delay,
 				duration: 1,
 			}}
 		>
@@ -53,6 +58,7 @@ FadeIn.defaultProps = {
 	id: '',
 	as: 'div',
 	threshold: 0.25,
+	delay: 0,
 };
 
 export default FadeIn;

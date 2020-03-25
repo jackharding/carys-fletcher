@@ -59,52 +59,77 @@ const SliderBg = styled(motion.div)`
 	/* transition: width 5s; */
 `;
 
+const getPosition = ($container, $element) => {
+	const {
+		top: containerTop,
+		left: containerLeft,
+	} = $container.getBoundingClientRect();
+
+	let {
+		top,
+		left,
+		width,
+		height,
+	} = $element.getBoundingClientRect();
+
+	return {
+		top: top -= containerTop,
+		left: left -= containerLeft,
+		width,
+		height,
+	}
+}
+
+let resizeTimer;
+
 const Tabs: React.FC = ({ tabs, activeIndex, onChange, children }: ITabsProps) => {
 	const [sliderDimensions, setSliderDimensions] = useState<IMenuNodeDimensions>({});
 
 	const $nav = useRef<HTMLElement>(null!);
 
+	const handleResize = () => {
+		clearTimeout(resizeTimer);
+
+		resizeTimer = setTimeout(() => {
+			setSliderDimensions(getPosition($nav.current, $nav.current.querySelector(`li:nth-child(${activeIndex + 1})`)));
+		}, 250);
+	}
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		}
+	}, []);
+
 	useEffect(() => {
 		if (!$nav.current) return;
 
-		const {
-			top: containerTop,
-			left: containerLeft,
-		} = $nav.current.getBoundingClientRect();
-
-		let {
-			top,
-			left,
-			width,
-			height,
-		} = $nav.current.querySelector(`li:nth-child(${activeIndex + 1})`).getBoundingClientRect();
-
-		setSliderDimensions({
-			top: top -= containerTop,
-			left: left -= containerLeft,
-			width,
-			height,
-		})
+		setSliderDimensions(getPosition($nav.current, $nav.current.querySelector(`li:nth-child(${activeIndex + 1})`)));
 	}, [activeIndex]);
 
 	return (
 		<>
 			<Nav ref={$nav}>
 				<SliderBg
-					positionTransition
-					initial={{
-						transitionDelay: 10000
+					positionTransition={{
+						type: 'tween',
+						damping: 70,
+						duration: .125
 					}}
 					animate={{
 						width: sliderDimensions.width,
 						height: sliderDimensions.height,
-						x: sliderDimensions.left,
+					}}
+					style={{
+						left: sliderDimensions.left,
 					}}
 				/>
 
 				<ul>
 					{tabs.map(({ text }, i) => (
-						<li>
+						<li key={`tab${i}`}>
 							<Button
 								active={i === activeIndex}
 								onClick={() => {
@@ -116,7 +141,7 @@ const Tabs: React.FC = ({ tabs, activeIndex, onChange, children }: ITabsProps) =
 				</ul>
 			</Nav>
 
-			{children}
+			{/* {children} */}
 		</>
 	);
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Modal from 'react-modal';
 
@@ -32,7 +32,27 @@ const AppContainer = styled.div`
 	position: relative;
 `;
 
+
 const Layout = ({ children }: ILayoutProps) => {
+	const [tabbing, setTabbing] = useState(false);
+
+	const handleKeyDown = (e) => {
+		if(typeof document === 'undefined' || tabbing) return;
+	
+		if(e.key === 'Tab') {
+			document.body.classList.add('user-is-tabbing');
+			setTabbing(true);
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		}
+	}, []);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 
 import Image from './Image';
+import FadeIn from './FadeIn';
 import WorkItem from './WorkItem';
 import WorkGrid from './WorkGrid';
 import Slider from './Slider';
@@ -137,46 +138,39 @@ const Work: React.FC = () => {
 	const commercial = useMemo(() => workItemsCommercial.slice(0, limit), [limit]);
 	const personal = useMemo(() => workItemsPersonal.slice(0, limit), [limit]);
 
-	const activeWorkType = activeIndex === 0 ? commercial : personal;
+	const activeWorkType = activeIndex === 1 ? commercial : personal;
+	const activeTypeTotal = activeIndex === 1? workItemsCommercial.length : workItemsPersonal.length;
 
 	return (
 		<>
-			<Tabs
-				activeIndex={activeIndex}
-				onChange={setActiveIndex}
-				tabs={[
-					{
-						text: 'Commercial'
-					},
-					{
-						text: 'Personal',
-					},
-				]}
+			<FadeIn 
+				delay={.45}
+				threshold={0.1}
 			>
-				{activeIndex === 0 ? (
-					<WorkGrid
-						hasMore={limit < workItemsCommercial.length}
-						onLoadMore={() => setLimit(limit + 6)}
-					>
-						{commercial.map(({ fileName, title }, i) => {
-							return (
-								<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
-							);
-						})}
-					</WorkGrid>
-				) : (
-						<WorkGrid
-							hasMore={limit < workItemsPersonal.length}
-							onLoadMore={() => setLimit(limit + 6)}
-						>
-							{personal.map(({ fileName, title }, i) => {
-								return (
-									<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
-								);
-							})}
-						</WorkGrid>
-					)}
-			</Tabs>
+				<Tabs
+					activeIndex={activeIndex}
+					onChange={setActiveIndex}
+					tabs={[
+						{
+							text: 'Portfolio',
+						},
+						{
+							text: 'Commercial'
+						},
+					]}
+				/>
+
+				<WorkGrid
+					hasMore={limit < activeTypeTotal}
+					onLoadMore={() => setLimit(limit + 6)}
+				>
+					{activeWorkType.map(({ fileName, title }, i) => {
+						return (
+							<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
+						);
+					})}
+				</WorkGrid>
+			</FadeIn>
 
 			<Modal
 				isOpen={typeof modalIndex !== 'undefined'}

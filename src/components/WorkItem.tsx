@@ -1,22 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import Image from './Image';
 import SR from './SR';
 
-const StyWorkItem = styled.button`
-	border: 0;
-	cursor: pointer;
+const StyWorkItem = styled(motion.button)`
+	position: relative;
 	height: 0;
 	padding-top: 100%;
-	position: relative;
+	border: 0;
+	overflow: hidden;
+	cursor: pointer;
 
 	.gatsby-image-wrapper {
 		position: absolute !important;
+		width: 100%;
 		height: 100%;
 		left: 0;
 		top: 0;
-		width: 100%;
 	}
 
 	p {
@@ -58,12 +60,19 @@ interface IWorkItemProps {
 
 const WorkItem: React.FC<IWorkItemProps> = ({ title, fileName, onClick }) => {
 	return (
-		<StyWorkItem onClick={onClick}
-			aria-labelledby={`work-${fileName}`}>
-			<SR id={`work-${fileName}`}>{title}</SR>
-			<p aria-hidden="true">{title}</p>
-			<Image fileName={fileName} alt="" />
-		</StyWorkItem>
+		<AnimatePresence>
+			<StyWorkItem 
+				onClick={onClick} 
+				aria-labelledby={`work-${fileName}`}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+			>
+				<SR id={`work-${fileName}`}>{title}</SR>
+				<p aria-hidden="true">{title}</p>
+				<Image fileName={fileName} alt="" />
+			</StyWorkItem>
+		</AnimatePresence>
 	);
 };
 
