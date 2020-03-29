@@ -11,23 +11,52 @@ import SR from './SR';
 import Tabs from './Tabs';
 
 const Slide = styled.div`
-	max-height: 87vh;
-	width: 90vw;
+	display: grid!important;
+	width: 90vw!important;
+	height: 90vh;
+	margin: 0 auto;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 50px;
 
 	> * {
 		margin: 0 auto;
 	}
+
+	@media (max-width: 919px) {
+		width: 82vw!important;
+	}
+
+	@media (max-width: 699px) {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 70px;
+
+		img {
+			object-position: 50% 50%!important;
+		}
+	}
 `;
 
 const SlideInfo = styled.div`
-	height: 17vh;
-	margin-top: 20px;
-	text-align: center;
-	overflow: auto;
+	grid-column: 2 / 3;
+	width: 100%;
+	margin-top: 7vh;
+	text-align: left;
 
 	h3 {
-		/* color: ${({ theme }) => theme.color.brandDarker}; */
-		font-size: 1.35rem;
+		line-height: 1.25;
+		font-size: 1.75rem;
+	}
+
+	@media (max-width: 699px) {
+		grid-column: initial;
+		margin-top: 0;
+		text-align: center;
+
+		h3 {
+			~* {
+				display: none;
+			}
+		}
 	}
 `;
 
@@ -138,7 +167,8 @@ const Work: React.FC = () => {
 	const commercial = useMemo(() => workItemsCommercial.slice(0, limit), [limit]);
 	const personal = useMemo(() => workItemsPersonal.slice(0, limit), [limit]);
 
-	const activeWorkType = activeIndex === 1 ? commercial : personal;
+	const activeWork = activeIndex === 1 ? commercial : personal;
+	const activeWorkFull = activeIndex === 1 ? workItemsCommercial : workItemsPersonal;
 	const activeTypeTotal = activeIndex === 1? workItemsCommercial.length : workItemsPersonal.length;
 
 	return (
@@ -164,7 +194,7 @@ const Work: React.FC = () => {
 					hasMore={limit < activeTypeTotal}
 					onLoadMore={() => setLimit(limit + 6)}
 				>
-					{activeWorkType.map(({ fileName, title }, i) => {
+					{activeWork.map(({ fileName, title }, i) => {
 						return (
 							<WorkItem title={title} fileName={fileName} onClick={() => setModalIndex(i)} key={`tile${fileName}`} />
 						);
@@ -205,14 +235,15 @@ const Work: React.FC = () => {
 				<Slider
 					initialSlide={modalIndex}
 				>
-					{activeWorkType.map(({ title, fileName, description, alt }, i) => {
+					{activeWorkFull.map(({ title, fileName, description, alt }, i) => {
 						return (
 							<Slide key={`slide${fileName}`}>
 								<Image
 									fileName={fileName}
 									alt={alt || `${title} by Carys Fletcher`}
 									objectFit="contain"
-									style={{ height: '72vh', width: '800px' }}
+									objectPosition="100% 0%"
+									style={{ height: '100%', width: '100%' }}
 								/>
 
 								<SlideInfo>

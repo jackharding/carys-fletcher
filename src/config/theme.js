@@ -5,5 +5,6 @@ export default {
 		disabled: '#cacaca',
 		dark: '#3f3f3f',
 		text: '#333',
+		whiteish: '#efefef',
 	},
 };

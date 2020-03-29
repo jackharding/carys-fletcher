@@ -133,6 +133,19 @@ export default css`
 		&.slick-next {
 			right: 0;
 		}
+
+		@media (max-width: 519px) {
+			svg {
+				width: 15px;
+			}
+			
+			&.slick-next {
+				right: -15px;
+			}
+			&.slick-prev {
+				left: -15px;
+			}
+		}
 	}
 
 	.slick-dots {

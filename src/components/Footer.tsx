@@ -2,22 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyFooter = styled.footer`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: ${({ theme }) => theme.color.brandDarker};
+    background: ${({ theme }) => theme.color.whiteish};
 
     p {
         margin: 0;
         font-size: 15px;
-        color: #fff;
         font-family: 'Open Sans', sans-serif;
     }
     
     a {
         text-decoration: none;
-        color: #fff;
         
         &:hover {
             text-decoration: underline;
@@ -38,6 +32,11 @@ const StyInner = styled.div`
     margin: 0 auto;
     padding: 22px 15px;
     /* border-top: 1px solid ${({ theme }) => theme.color.brand}; */
+
+	@media (max-width: 519px) {
+		flex-direction: column;
+		text-align: center;
+	}
 `;
 
 const Footer: React.FC = () => {

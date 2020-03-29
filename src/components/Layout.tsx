@@ -28,31 +28,10 @@ const PageWrap = styled.main`
 
 const AppContainer = styled.div`
 	min-height: 100vh;
-	padding-bottom: 115px;
-	position: relative;
 `;
 
 
 const Layout = ({ children }: ILayoutProps) => {
-	const [tabbing, setTabbing] = useState(false);
-
-	const handleKeyDown = (e) => {
-		if(typeof document === 'undefined' || tabbing) return;
-	
-		if(e.key === 'Tab') {
-			document.body.classList.add('user-is-tabbing');
-			setTabbing(true);
-		}
-	}
-
-	useEffect(() => {
-		window.addEventListener('keydown', handleKeyDown);
-
-		return () => {
-			window.removeEventListener('keydown', handleKeyDown);
-		}
-	}, []);
-
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />

@@ -6,6 +6,7 @@ interface ImageProps {
 	fileName: string;
 	alt: string;
 	objectFit?: 'cover' | 'contain';
+	objectPosition?: string;
 	style: object;
 }
 
@@ -33,8 +34,6 @@ const Image: React.FC<ImageProps> = (props) => (
 				return n.node.relativePath.includes(props.fileName);
 			});
 
-			console.log(image)
-
 			if (!image) {
 				return null;
 			}
@@ -44,6 +43,7 @@ const Image: React.FC<ImageProps> = (props) => (
 					alt={props.alt}
 					fluid={image.node.childImageSharp.fluid}
 					objectFit={props.objectFit}
+					objectPosition={props.objectPosition}
 					style={props.style}
 				/>
 			);
@@ -53,6 +53,7 @@ const Image: React.FC<ImageProps> = (props) => (
 
 Image.defaultProps = {
 	objectFit: 'cover',
+	objectPosition: '50% 50%',
 };
 
 export default Image;

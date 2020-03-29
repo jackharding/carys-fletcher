@@ -51,15 +51,4 @@ export default css`
 	button:focus {
 		outline: 1px dashed rgba(0, 0, 0, 0.35);
 	}
-
-	body:not(.user-is-tabbing) {
-		a,
-		button,
-		input,
-		textarea,
-		select {
-			outline: none!important;
-			box-shadow: none!important;
-		}
-	}
 `;
