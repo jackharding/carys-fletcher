@@ -91,7 +91,8 @@ const Tabs: React.FC = ({ tabs, activeIndex, onChange, children }: ITabsProps) =
 		clearTimeout(resizeTimer);
 
 		resizeTimer = setTimeout(() => {
-			setSliderDimensions(getPosition($nav.current, $nav.current.querySelector(`li:nth-child(${activeIndex + 1})`)));
+			console.log($nav.current.querySelector(`li:nth-child(${activeIndex + 1})`))
+			setSliderDimensions(getPosition($nav.current, $nav.current.querySelector(`li[data-active=true]`)));
 		}, 250);
 	}
 
@@ -106,7 +107,7 @@ const Tabs: React.FC = ({ tabs, activeIndex, onChange, children }: ITabsProps) =
 	useEffect(() => {
 		if (!$nav.current) return;
 
-		setSliderDimensions(getPosition($nav.current, $nav.current.querySelector(`li:nth-child(${activeIndex + 1})`)));
+		setSliderDimensions(getPosition($nav.current, $nav.current.querySelector('li[data-active=true]')));
 	}, [activeIndex]);
 
 	return (
@@ -129,7 +130,10 @@ const Tabs: React.FC = ({ tabs, activeIndex, onChange, children }: ITabsProps) =
 
 				<ul>
 					{tabs.map(({ text }, i) => (
-						<li key={`tab${i}`}>
+						<li 
+							data-active={i === activeIndex}
+							key={`tab${i}`}
+						>
 							<Button
 								active={i === activeIndex}
 								onClick={() => {

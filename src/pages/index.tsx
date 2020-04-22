@@ -10,29 +10,6 @@ import SEO from '../components/SEO';
 import SR from '../components/SR';
 
 const IndexPage = () => {
-	const {
-		allMarkdownRemark: { edges: work },
-	} = useStaticQuery(graphql`
-		{
-			allMarkdownRemark {
-				edges {
-					node {
-						frontmatter {
-							title
-							slug
-							cover
-							images {
-								src
-								alt
-							}
-						}
-						html
-					}
-				}
-			}
-		}
-	`);
-
 	return (
 		<Layout>
 			<SEO />
@@ -44,7 +21,7 @@ const IndexPage = () => {
 				<SR id="work-title" as="h2">
 					My work
 				</SR>
-				<Work work={work} />
+				<Work />
 			</section>
 
 			<FadeIn

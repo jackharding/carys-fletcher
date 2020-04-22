@@ -39,10 +39,12 @@ const Slide = styled.div`
 const SlideInfo = styled.div`
 	grid-column: 2 / 3;
 	width: 100%;
-	margin-top: 7vh;
+	max-width: 455px;
+	margin: 7vh auto 0 0;
 	text-align: left;
 
 	h3 {
+		margin-bottom: 12px;
 		line-height: 1.25;
 		font-size: 1.75rem;
 	}
@@ -86,12 +88,74 @@ const CloseModal = styled.button`
 
 const workItemsCommercial = [
 	{
+		fileName: 'reflections.jpg',
+		title: 'Reflections - Megh Rajani Rai',
+		description: '<p>This portrait was chosen and displayed in the Nepal Art Council gallery in 2016. The subject, Megh, worked as a technical specialist in disaster management and spent a month living in a tent working following the 26.04.2015 eathquake.</p>'
+	},
+	{
+		fileName: 'rhs-garden.jpg',
+		title: 'Step in to a wilder future - Garden',
+		description: '<p>RHS Garden designed for the Wildlife Trust of South and West Wales, with characters from the Wind in the Willows short narrated by David Attenborough. These illustrations have been featured on the RHS website and in Gardener\'s World.</p>',
+	},
+	{
 		fileName: 'badger.jpg',
-		title: 'Badger',
+		title: 'Step in to a wilder future - Badger',
+		description: '<p>RHS Garden designed for the Wildlife Trust of South and West Wales, with characters from the Wind in the Willows short narrated by David Attenborough. These illustrations have been featured on the RHS website and in Gardener\'s World.</p>',
 	},
 	{
 		fileName: 'mole.jpg',
-		title: 'Mole',
+		title: 'Step in to a wilder future - Mole',
+		description: '<p>RHS Garden designed for the Wildlife Trust of South and West Wales, with characters from the Wind in the Willows short narrated by David Attenborough. These illustrations have been featured on the RHS website and in Gardener\'s World.</p>',
+	},
+	{
+		fileName: 'vole.jpg',
+		title: 'Step in to a wilder future - Ratty',
+		description: '<p>RHS Garden designed for the Wildlife Trust of South and West Wales, with characters from the Wind in the Willows short narrated by David Attenborough. These illustrations have been featured on the RHS website and in Gardener\'s World.</p>',
+	},
+	{
+		fileName: 'toad.jpg',
+		title: 'Step in to a wilder future - Toad',
+		description: '<p>RHS Garden designed for the Wildlife Trust of South and West Wales, with characters from the Wind in the Willows short narrated by David Attenborough. These illustrations have been featured on the RHS website and in Gardener\'s World.</p>',
+	},
+	{
+		fileName: 'visitor-centre.jpg',
+		title: 'Parc Slip Visitor Centre - Visitor Centre',
+		description: '<p>A commission from the wildlife reserve in Bridgend, South Wales to redesign their park map.</p>',
+	},
+	{
+		fileName: 'main-map.jpg',
+		title: 'Parc Slip Visitor Centre - Map',
+		description: '<p>A commission from the wildlife reserve in Bridgend, South Wales to redesign their park map.</p>',
+	},
+	{
+		fileName: 'fancy-key.jpg',
+		title: 'Parc Slip Visitor Centre - Key',
+		description: '<p>A commission from the wildlife reserve in Bridgend, South Wales to redesign their park map.</p>',
+	},
+	{
+		fileName: 'bucktown-poster.jpg',
+		title: 'Bucktown',
+		description: '<p>Entry for the design of the 2017 Bucktown Arts Fest in the USA.</p>',
+	},
+	{
+		fileName: 'bay.jpg',
+		title: 'RSPB - Cardiff Bay',
+		description: '<p>A series of illustrations displaying nature found in certain areas of Cardiff, commissioned by the RSPB.</p>',
+	},
+	{
+		fileName: 'city.jpg',
+		title: 'RSPB - City Centre',
+		description: '<p>A series of illustrations displaying nature found in certain areas of Cardiff, commissioned by the RSPB.</p>',
+	},
+	{
+		fileName: 'leaf.jpg',
+		title: 'RSPB - Parks of Cardiff',
+		description: '<p>A series of illustrations displaying nature found in certain areas of Cardiff, commissioned by the RSPB.</p>',
+	},
+	{
+		fileName: 'subs.jpg',
+		title: 'RSPB - Roath & surrounding areas',
+		description: '<p>A series of illustrations displaying nature found in certain areas of Cardiff, commissioned by the RSPB.</p>',
 	},
 ];
 
